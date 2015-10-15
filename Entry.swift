@@ -20,6 +20,6 @@ class Entry: Equatable {
     }
 }
 
-func ==(lhs: Entry, rhs: Entry) {
+func ==(lhs: Entry, rhs: Entry) -> Bool {
     return (lhs.title == rhs.title) && (lhs.bodyText == rhs.bodyText)
 }

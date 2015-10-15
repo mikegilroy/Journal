@@ -9,7 +9,7 @@ import UIKit
 
 // import Foundation
 
-class EntryController: Equatable {
+class EntryController {
     
     static let sharedController = EntryController()
     
