@@ -37,5 +37,17 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
         
         return cell
     }
+    
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            let selectedEntry = EntryController.sharedController.entries[selectedIndexPath.row]
+            
+            EntryController.sharedController.removeEntry(selectedEntry)
+            tableView.deleteRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .Fade)
+            }
+        }
+    }
 }
 
