@@ -9,9 +9,9 @@ import UIKit
 
 // import Foundation
 
-class EntryController {
+class EntryController: Equatable {
     
-    static let singleton = EntryController()
+    static let sharedController = EntryController()
     
     var entries = [Entry]()
     
@@ -26,4 +26,6 @@ class EntryController {
 
         }
     }
+    
+    
 }

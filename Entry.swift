@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Entry {
+class Entry: Equatable {
 //    var timestamp = NSDate
     var timestamp: String = "now"
     var title: String
@@ -18,4 +18,8 @@ class Entry {
         self.title = title
         self.bodyText = title
     }
+}
+
+func ==(lhs: Entry, rhs: Entry) {
+    return (lhs.title == rhs.title) && (lhs.bodyText == rhs.bodyText)
 }
