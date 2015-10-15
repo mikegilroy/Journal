@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2vu-oZ-2rj">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Entry List View Controller-->
@@ -48,6 +49,9 @@
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <segue destination="X9O-LD-mUA" kind="show" identifier="toViewEntry" id="1vm-GE-DmB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -65,14 +69,86 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uY8-eQ-pcA" secondAttribute="bottom" id="upp-ah-DCl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aNL-Pb-1Rc"/>
+                    <navigationItem key="navigationItem" id="aNL-Pb-1Rc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Brp-hD-NW6">
+                            <connections>
+                                <segue destination="X9O-LD-mUA" kind="show" identifier="addEntry" id="TpJ-PH-PJy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="uY8-eQ-pcA" id="MxK-lF-5FM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1259" y="394"/>
+            <point key="canvasLocation" x="1151" y="394"/>
+        </scene>
+        <!--Entry Detail View Controller-->
+        <scene sceneID="wYD-5M-WKq">
+            <objects>
+                <viewController id="X9O-LD-mUA" customClass="EntryDetailViewController" customModule="Journal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BVG-ry-5A2"/>
+                        <viewControllerLayoutGuide type="bottom" id="83V-Pw-j5F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nTa-l1-sIV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="isW-dv-Ivj">
+                                <rect key="frame" x="15" y="72" width="565" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="X9O-LD-mUA" id="urC-39-IrB"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePe-we-nsg">
+                                <rect key="frame" x="279" y="550" width="36" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearButtonTapped:" destination="X9O-LD-mUA" eventType="touchUpInside" id="gma-78-pEv"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-RW-PeR">
+                                <rect key="frame" x="15" y="110" width="565" height="429"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="isW-dv-Ivj" firstAttribute="trailing" secondItem="nTa-l1-sIV" secondAttribute="trailingMargin" id="7K3-0F-6gK"/>
+                            <constraint firstItem="isW-dv-Ivj" firstAttribute="top" secondItem="BVG-ry-5A2" secondAttribute="bottom" constant="8" symbolic="YES" id="Bic-01-yZ0"/>
+                            <constraint firstItem="q5U-RW-PeR" firstAttribute="trailing" secondItem="isW-dv-Ivj" secondAttribute="trailing" id="EMY-5z-U69"/>
+                            <constraint firstItem="isW-dv-Ivj" firstAttribute="leading" secondItem="nTa-l1-sIV" secondAttribute="leadingMargin" constant="-5" id="GaJ-XW-7rN"/>
+                            <constraint firstItem="q5U-RW-PeR" firstAttribute="top" secondItem="isW-dv-Ivj" secondAttribute="bottom" constant="8" symbolic="YES" id="IW7-NJ-1gh"/>
+                            <constraint firstItem="q5U-RW-PeR" firstAttribute="leading" secondItem="isW-dv-Ivj" secondAttribute="leading" id="SbU-4U-XB2"/>
+                            <constraint firstItem="83V-Pw-j5F" firstAttribute="top" secondItem="q5U-RW-PeR" secondAttribute="bottom" constant="61" id="UX6-Oj-JWW"/>
+                            <constraint firstItem="ePe-we-nsg" firstAttribute="centerX" secondItem="q5U-RW-PeR" secondAttribute="centerX" id="tWN-yd-mZz"/>
+                            <constraint firstAttribute="bottom" secondItem="ePe-we-nsg" secondAttribute="bottom" constant="20" symbolic="YES" id="uKZ-hu-epl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="CeK-fn-RiL">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Fj7-ib-N1b">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="X9O-LD-mUA" id="Mw1-NC-cNu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bodyTextView" destination="q5U-RW-PeR" id="Rwt-iu-W2X"/>
+                        <outlet property="titleTextField" destination="isW-dv-Ivj" id="DED-V3-d3r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d9z-On-vda" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1909" y="394"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="w1z-Wl-vAm">
@@ -94,4 +170,7 @@
             <point key="canvasLocation" x="447" y="394"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1vm-GE-DmB"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		102FC95D1BD04BBB00EAB487 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102FC95C1BD04BBB00EAB487 /* Entry.swift */; settings = {ASSET_TAGS = (); }; };
 		102FC95F1BD04E4100EAB487 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102FC95E1BD04E4100EAB487 /* EntryController.swift */; settings = {ASSET_TAGS = (); }; };
+		10FB931A1BD0603F00453B8D /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FB93191BD0603F00453B8D /* EntryDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		68816AC81BBB5405000569CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68816AC71BBB5405000569CE /* AppDelegate.swift */; };
 		68816ACA1BBB5405000569CE /* EntryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68816AC91BBB5405000569CE /* EntryListViewController.swift */; };
 		68816ACD1BBB5405000569CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68816ACB1BBB5405000569CE /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		102FC95C1BD04BBB00EAB487 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entry.swift; path = ../Entry.swift; sourceTree = "<group>"; };
 		102FC95E1BD04E4100EAB487 /* EntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
+		10FB93191BD0603F00453B8D /* EntryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
 		68816AC41BBB5405000569CE /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68816AC71BBB5405000569CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68816AC91BBB5405000569CE /* EntryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10FB931B1BD0604A00453B8D /* Entry Model */ = {
+			isa = PBXGroup;
+			children = (
+				102FC95E1BD04E4100EAB487 /* EntryController.swift */,
+				102FC95C1BD04BBB00EAB487 /* Entry.swift */,
+			);
+			name = "Entry Model";
+			sourceTree = "<group>";
+		};
 		68816ABB1BBB5405000569CE = {
 			isa = PBXGroup;
 			children = (
@@ -101,10 +112,10 @@
 		68816AC61BBB5405000569CE /* Journal */ = {
 			isa = PBXGroup;
 			children = (
-				102FC95C1BD04BBB00EAB487 /* Entry.swift */,
-				102FC95E1BD04E4100EAB487 /* EntryController.swift */,
 				68816AC71BBB5405000569CE /* AppDelegate.swift */,
 				68816AC91BBB5405000569CE /* EntryListViewController.swift */,
+				10FB93191BD0603F00453B8D /* EntryDetailViewController.swift */,
+				10FB931B1BD0604A00453B8D /* Entry Model */,
 				68816ACB1BBB5405000569CE /* Main.storyboard */,
 				68816ACE1BBB5405000569CE /* Assets.xcassets */,
 				68816AD01BBB5405000569CE /* LaunchScreen.storyboard */,
@@ -264,6 +275,7 @@
 				102FC95D1BD04BBB00EAB487 /* Entry.swift in Sources */,
 				68816ACA1BBB5405000569CE /* EntryListViewController.swift in Sources */,
 				102FC95F1BD04E4100EAB487 /* EntryController.swift in Sources */,
+				10FB931A1BD0603F00453B8D /* EntryDetailViewController.swift in Sources */,
 				68816AC81BBB5405000569CE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

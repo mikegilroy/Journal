@@ -33,7 +33,7 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
         let entry = EntryController.sharedController.entries[indexPath.row]
         
         cell.textLabel?.text = entry.title
-        cell.detailTextLabel?.text = entry.timestamp
+        cell.detailTextLabel?.text = "\(entry.timestamp)"
         
         return cell
     }
@@ -42,12 +42,36 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            let selectedEntry = EntryController.sharedController.entries[selectedIndexPath.row]
+                let selectedEntry = EntryController.sharedController.entries[selectedIndexPath.row]
             
-            EntryController.sharedController.removeEntry(selectedEntry)
-            tableView.deleteRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .Fade)
+                EntryController.sharedController.removeEntry(selectedEntry)
+                tableView.deleteRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .Fade)
             }
         }
     }
+    
+    
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toAddEntry" {
+            
+        }
+        
+        if segue.identifier == "toViewEntry" {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                let selectedEntry = EntryController.sharedController.entries[selectedIndexPath.row]
+                
+                let entryDetailScene = segue.destinationViewController as? EntryDetailViewController
+                entryDetailScene?.updateWithEntry(selectedEntry)
+                
+            }
+        }
+     }
+    
+    
+    
+    
+    
 }
 

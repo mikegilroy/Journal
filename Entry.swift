@@ -10,13 +10,14 @@ import Foundation
 
 class Entry: Equatable {
 //    var timestamp = NSDate
-    var timestamp: String = "now"
+    var timestamp: NSDate
     var title: String
     var bodyText: String
     
-    init(title: String, bodyText: String) {
+    init(timestamp: NSDate = NSDate(), title: String, bodyText: String) {
         self.title = title
         self.bodyText = title
+        self.timestamp = timestamp
     }
 }
 
