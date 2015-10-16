@@ -32,7 +32,6 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
     @IBAction func clearButtonTapped(sender: AnyObject) {
         titleTextField.text = ""
         bodyTextView.text = ""
-        
     }
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
@@ -51,7 +50,6 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
         }
         
         self.navigationController?.popViewControllerAnimated(true)
-        
     }
     
     
@@ -60,7 +58,6 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
         
         self.titleTextField.text = entry.title
         self.bodyTextView.text = entry.bodyText
-        
     }
 
     /*
@@ -81,7 +78,6 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
     
     
 }
