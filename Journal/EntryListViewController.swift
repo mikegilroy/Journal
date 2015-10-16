@@ -19,6 +19,7 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
     
@@ -61,7 +62,7 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
         
         
         if segue.identifier == "toViewEntry" {
-            if let detailViewController = segue.destinationViewController as? EntryDetailViewController{
+            if let detailViewController = segue.destinationViewController as? EntryDetailViewController {
                 _ = detailViewController.view
                 let indexPath = tableView.indexPathForSelectedRow
                 if let selectedRow = indexPath?.row {

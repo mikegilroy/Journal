@@ -25,8 +25,13 @@ class Entry: Equatable {
         self.bodyText = title
         self.timestamp = timestamp
     }
-    init? (dictionary: [String:AnyObject]){
-        guard let titleFromDictonary = dictionary["title"] as? String, let bodyTextFromDictonary = dictionary["bodyText"] as? String, let timestampFromDictionary = dictionary ["timestamp"] as? NSDate else{
+    
+    
+    init?(dictionary: [String: AnyObject]) {
+        guard let titleFromDictonary = dictionary[titleKey] as? String,
+              let bodyTextFromDictonary = dictionary[bodyTextKey] as? String,
+              let timestampFromDictionary = dictionary[timestampKey] as? NSDate else {
+            
             self.title = ""
             self.bodyText = ""
             self.timestamp = NSDate()
@@ -36,18 +41,21 @@ class Entry: Equatable {
         self.bodyText = bodyTextFromDictonary
         self.timestamp = timestampFromDictionary
     }
-    func dictionaryRepresentation() ->[String: AnyObject]{
+    
+    
+    func dictionaryRepresentation() -> Dictionary<String, AnyObject>  {
         
-        return[
-            "title" : self.title,
-            "artist" : self.bodyText,
-            "timestamp" : self.timestamp
-            
+        let dictionary = [
+            titleKey : self.title,
+            bodyTextKey : self.bodyText,
+            timestampKey : self.timestamp
         ]
+        return dictionary
     }
     
 }
 
 func ==(lhs: Entry, rhs: Entry) -> Bool {
-    return (lhs.title == rhs.title) && (lhs.bodyText == rhs.bodyText)
+    return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    // return (lhs.title == rhs.title) && (lhs.bodyText == rhs.bodyText)
 }

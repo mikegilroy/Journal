@@ -13,19 +13,28 @@ class EntryController {
     
     static let sharedController = EntryController()
     
-    var entries = [Entry]()
+    private let entriesKey = "entries"
+    
+    var entries : [Entry]
+    
+    init() {
+        self.entries = []
+        self.loadFromPersistantStorage()
+    }
     
     func addEntry(entry: Entry) ->() {
         entries.append(entry)
+        self.saveToPersistantStorage()
     }
+    
     func saveToPersistantStorage() {
-        let entryDictonaries = self.entries.map({$0.dictionaryRepresentation()})
-        NSUserDefaults.standardUserDefaults().setValue(entryDictonaries, forKey: "Entries")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        let entryDictionaries = self.entries.map({$0.dictionaryRepresentation()})
+        NSUserDefaults.standardUserDefaults().setValue(entryDictionaries, forKey: entriesKey)
     }
+    
     func loadFromPersistantStorage() {
-        let entryDictionaryFromDefault = NSUserDefaults.standardUserDefaults().objectForKey("Entries") as? [Dictionary<String, AnyObject>]
-        if let entryDictionaries = entryDictionaryFromDefault {
+        let entryDictionaryFromDefaults = NSUserDefaults.standardUserDefaults().objectForKey(entriesKey) as? [Dictionary<String, AnyObject>]
+        if let entryDictionaries = entryDictionaryFromDefaults {
             self.entries = entryDictionaries.map({Entry(dictionary: $0)!})
         }
         
