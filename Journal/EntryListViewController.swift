@@ -58,24 +58,33 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toAddEntry" {
-            
-        }
+        
         
         if segue.identifier == "toViewEntry" {
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                let selectedEntry = EntryController.sharedController.entries[selectedIndexPath.row]
-                
-                let entryDetailScene = segue.destinationViewController as? EntryDetailViewController
-                entryDetailScene?.updateWithEntry(selectedEntry)
+            if let detailViewController = segue.destinationViewController as? EntryDetailViewController{
+                _ = detailViewController.view
+                let indexPath = tableView.indexPathForSelectedRow
+                if let selectedRow = indexPath?.row {
+                    let entry = EntryController.sharedController.entries[selectedRow]
+                    detailViewController.updateWithEntry(entry)
+                }
                 
             }
+            
+            
+            
+//            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+//                let selectedEntry = EntryController.sharedController.entries[selectedIndexPath.row]
+//                
+//                let entryDetailScene = segue.destinationViewController as? EntryDetailViewController
+//                entryDetailScene?.updateWithEntry(selectedEntry)
+//            }
         }
      }
     
     
     
     
-    
+
 }
 
