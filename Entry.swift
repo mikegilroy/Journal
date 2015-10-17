@@ -16,11 +16,11 @@ class Entry: Equatable {
     private let timestampKey = "timestamp"
     
 //    var timestamp = NSDate
-    var timestamp: NSDate
+    var timestamp: String
     var title: String
     var bodyText: String
     
-    init(timestamp: NSDate = NSDate(), title: String, bodyText: String) {
+    init(timestamp: String, title: String, bodyText: String) {
         self.title = title
         self.bodyText = title
         self.timestamp = timestamp
@@ -30,11 +30,11 @@ class Entry: Equatable {
     init?(dictionary: [String: AnyObject]) {
         guard let titleFromDictonary = dictionary[titleKey] as? String,
               let bodyTextFromDictonary = dictionary[bodyTextKey] as? String,
-              let timestampFromDictionary = dictionary[timestampKey] as? NSDate else {
+              let timestampFromDictionary = dictionary[timestampKey] as? String else {
             
             self.title = ""
             self.bodyText = ""
-            self.timestamp = NSDate()
+            self.timestamp = ""
             return nil
         }
         self.title = titleFromDictonary

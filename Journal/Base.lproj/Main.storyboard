@@ -96,7 +96,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="cdq-9e-HQ7">
-                                <rect key="frame" x="5" y="69" width="590" height="492"/>
+                                <rect key="frame" x="5" y="69" width="590" height="521"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="isW-dv-Ivj">
                                         <rect key="frame" x="0.0" y="0.0" width="590" height="30"/>
@@ -108,18 +108,23 @@
                                         </connections>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-RW-PeR">
-                                        <rect key="frame" x="0.0" y="34" width="590" height="424"/>
+                                        <rect key="frame" x="0.0" y="34" width="590" height="453"/>
                                         <animations/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outlet property="delegate" destination="X9O-LD-mUA" id="SVX-gg-gKO"/>
+                                            <outletCollection property="gestureRecognizers" destination="2YK-cW-0F9" appends="YES" id="czb-L1-QLS"/>
                                         </connections>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePe-we-nsg">
-                                        <rect key="frame" x="0.0" y="462" width="590" height="30"/>
+                                        <rect key="frame" x="0.0" y="491" width="590" height="30"/>
                                         <animations/>
-                                        <state key="normal" title="Clear"/>
+                                        <color key="backgroundColor" red="0.97170621156692505" green="0.038180362433195114" blue="0.2412513792514801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Clear">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="clearButtonTapped:" destination="X9O-LD-mUA" eventType="touchUpInside" id="gma-78-pEv"/>
                                         </connections>
@@ -134,7 +139,7 @@
                             <constraint firstItem="cdq-9e-HQ7" firstAttribute="leading" secondItem="nTa-l1-sIV" secondAttribute="leading" constant="5" id="J02-YV-l4W"/>
                             <constraint firstItem="cdq-9e-HQ7" firstAttribute="top" secondItem="BVG-ry-5A2" secondAttribute="bottom" constant="5" id="ZrO-Mc-bXE"/>
                             <constraint firstAttribute="trailing" secondItem="cdq-9e-HQ7" secondAttribute="trailing" constant="5" id="tVI-Xh-TDg"/>
-                            <constraint firstItem="83V-Pw-j5F" firstAttribute="top" secondItem="cdq-9e-HQ7" secondAttribute="bottom" constant="39" id="zNJ-Ad-bzF"/>
+                            <constraint firstItem="83V-Pw-j5F" firstAttribute="top" secondItem="cdq-9e-HQ7" secondAttribute="bottom" constant="10" id="zNJ-Ad-bzF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CeK-fn-RiL">
@@ -150,6 +155,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9z-On-vda" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="yE0-wS-Imp"/>
+                <swipeGestureRecognizer direction="right" id="2YK-cW-0F9"/>
             </objects>
             <point key="canvasLocation" x="1909" y="394"/>
         </scene>

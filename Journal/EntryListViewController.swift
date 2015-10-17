@@ -15,17 +15,13 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // reload tableView data each time tableView appears
         tableView.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,10 +29,14 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        // deque reusable cell
         let cell = tableView.dequeueReusableCellWithIdentifier("entryCell", forIndexPath: indexPath)
         
+        // capture entry using indexPath
         let entry = EntryController.sharedController.entries[indexPath.row]
         
+        // Set text of cell using captured entry object
         cell.textLabel?.text = entry.title
         cell.detailTextLabel?.text = "\(entry.timestamp)"
         
@@ -45,12 +45,18 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // Check editing style
         if editingStyle == .Delete {
+            
+                // Capture entry being edited using indexPath
                 let entry = EntryController.sharedController.entries[indexPath.row]
             
+                // Remove entry from the entry array
                 EntryController.sharedController.removeEntry(entry)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
             
+                // Delete the row containing the entry
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
         }
     }
     
@@ -61,24 +67,24 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
         
         
         if segue.identifier == "toViewEntry" {
+            
+            // Use if let to capture instance of destination view controller
             if let detailViewController = segue.destinationViewController as? EntryDetailViewController {
+                
+                // force load destination view controller views
                 _ = detailViewController.view
+                
+                // capture indexPath of selected row
                 let indexPath = tableView.indexPathForSelectedRow
+                
                 if let selectedRow = indexPath?.row {
+                    // use indexPath of selected row to capture current entry
                     let entry = EntryController.sharedController.entries[selectedRow]
+                    
+                    // pass current entry object to detailViewController with updateWith function
                     detailViewController.updateWithEntry(entry)
                 }
-                
             }
-            
-            
-            
-//            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-//                let selectedEntry = EntryController.sharedController.entries[selectedIndexPath.row]
-//                
-//                let entryDetailScene = segue.destinationViewController as? EntryDetailViewController
-//                entryDetailScene?.updateWithEntry(selectedEntry)
-//            }
         }
      }
     
