@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EntryDetailViewController: UIViewController, UITextFieldDelegate {
+class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     // MARK: Properties
     
@@ -79,5 +79,8 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textViewDidEndEditing(textView: UITextView) {
+        textView.resignFirstResponder()
+    }
     
 }
