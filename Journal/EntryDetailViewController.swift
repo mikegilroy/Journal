@@ -39,8 +39,21 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     // MARK: Actions
     
     @IBAction func clearButtonTapped(sender: AnyObject) {
-        titleTextField.text = ""
-        bodyTextView.text = ""
+        
+        let alert = UIAlertController()
+        alert.title = "Are you sure?"
+        alert.message = "Clearing note cannot be undone"
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        let clearAction = UIAlertAction(title: "Clear", style: .Destructive) { (UIAlertAction) -> Void in
+            self.titleTextField.text = ""
+            self.bodyTextView.text = ""
+        }
+        alert.addAction(clearAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
