@@ -8,12 +8,11 @@
 
 import UIKit
 
-class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate {
 
     // MARK: Properties
     
     @IBOutlet weak var titleTextField: UITextField!
-    
     @IBOutlet weak var bodyTextView: UITextView!
     
     var entry: Entry?
@@ -22,8 +21,9 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleTextViewSwipe")
+        self.bodyTextView.addGestureRecognizer(swipeGestureRecognizer)
     }
 
     
@@ -42,9 +42,9 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
             if let currentBodyText = bodyTextView.text {
                 currentEntry.bodyText = currentBodyText
             }
-            currentEntry.timestamp = NSDate()
+            currentEntry.timestamp = getFormattedTimestamp(NSDate())
         } else {
-            let newEntry = Entry(title: self.titleTextField.text!, bodyText: self.bodyTextView.text!)
+            let newEntry = Entry(timestamp: self.getFormattedTimestamp(NSDate()), title: self.titleTextField.text!, bodyText: self.bodyTextView.text!)
             EntryController.sharedController.addEntry(newEntry)
             self.entry = newEntry
         }
@@ -60,27 +60,59 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         self.bodyTextView.text = entry.bodyText
     }
 
-    /*
-    // MARK: - Navigation?
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     
-    
-    // MARK: Text Field
+    // MARK: Text Field / Views
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    func textViewDidEndEditing(textView: UITextView) {
-        textView.resignFirstResponder()
+    /*
+    // function to dismiss keyoboard on return
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+            if(text == "\n") {
+                textView.resignFirstResponder()
+                return false
+            }
+        return true
     }
+    */
+    
+    
+    
+    // MARK: Functions
+    
+    
+    func getFormattedTimestamp(date: NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEE h:mma - dd/MM/yyyy"
+        return dateFormatter.stringFromDate(date)
+    }
+    
+
+    
+    // MARK: Handling Gestures
+    
+    func handleTextViewSwipe() {
+        // self.saveButtonTapped(bodyTextView)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
