@@ -17,12 +17,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uY8-eQ-pcA">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="entryCell" textLabel="KEw-SE-Bvd" detailTextLabel="HuM-j4-zcJ" style="IBUITableViewCellStyleSubtitle" id="TJa-Di-WOQ">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TJa-Di-WOQ" id="Vzr-kW-EIv">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -58,23 +58,33 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="BY4-kV-ANU"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="4G3-Ei-rwM">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tkX-Ye-sgd"/>
+                                    <barButtonItem systemItem="compose" id="JAr-rb-9my">
+                                        <connections>
+                                            <segue destination="X9O-LD-mUA" kind="show" identifier="newEntry" id="OB8-oh-CcV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="4G3-Ei-rwM" firstAttribute="trailing" secondItem="uY8-eQ-pcA" secondAttribute="trailing" id="1QP-Gm-fOs"/>
                             <constraint firstItem="uY8-eQ-pcA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hlx-GD-0AB"/>
                             <constraint firstAttribute="trailing" secondItem="uY8-eQ-pcA" secondAttribute="trailing" id="jWx-Ac-QA4"/>
+                            <constraint firstItem="4G3-Ei-rwM" firstAttribute="leading" secondItem="uY8-eQ-pcA" secondAttribute="leading" id="m9c-Rw-5ag"/>
                             <constraint firstItem="uY8-eQ-pcA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="t77-8w-btb"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uY8-eQ-pcA" secondAttribute="bottom" id="upp-ah-DCl"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uY8-eQ-pcA" secondAttribute="bottom" constant="44" id="upp-ah-DCl"/>
+                            <constraint firstItem="4G3-Ei-rwM" firstAttribute="top" secondItem="uY8-eQ-pcA" secondAttribute="bottom" id="y3g-G5-Coq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aNL-Pb-1Rc">
                         <barButtonItem key="backBarButtonItem" title="Back" id="a6o-TQ-hdM"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Brp-hD-NW6">
-                            <connections>
-                                <segue destination="X9O-LD-mUA" kind="show" identifier="addEntry" id="TpJ-PH-PJy"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="uY8-eQ-pcA" id="MxK-lF-5FM"/>
@@ -188,6 +198,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1vm-GE-DmB"/>
+        <segue reference="OB8-oh-CcV"/>
     </inferredMetricsTieBreakers>
 </document>

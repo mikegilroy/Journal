@@ -59,6 +59,12 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
                 // Delete the row containing the entry
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
         }
+        
+        
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
     
     
