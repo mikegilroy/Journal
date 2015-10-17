@@ -25,6 +25,15 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleTextViewSwipe")
         self.bodyTextView.addGestureRecognizer(swipeGestureRecognizer)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        // Set title of note when detail view appears
+        if let newEntry = entry {
+            self.title = newEntry.title
+        } else {
+            self.title = "New Note"
+        }
+    }
 
     
     // MARK: Actions

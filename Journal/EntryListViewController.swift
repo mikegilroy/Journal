@@ -15,6 +15,7 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Travel Notes"
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -83,6 +84,7 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
                     
                     // pass current entry object to detailViewController with updateWith function
                     detailViewController.updateWithEntry(entry)
+                    detailViewController.entry = entry
                 }
             }
         }
