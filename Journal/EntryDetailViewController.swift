@@ -55,7 +55,7 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         let alert = UIAlertController()
         alert.title = "Are you sure?"
-        alert.message = "Clearing note cannot be undone"
+        alert.message = "Clearing contents cannot be undone"
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alert.addAction(cancelAction)
@@ -84,9 +84,15 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         // If this is a new entry
         } else {
             
-                    let newEntry = Entry(timestamp: self.getFormattedTimestamp(NSDate()), title: titleTextField.text!, bodyText: bodyTextView.text)
-                    EntryController.sharedController.addEntry(newEntry)
-                    self.entry = newEntry
+            if let titleText = titleTextField.text, let bodyText = bodyTextView.text {
+                
+                if !(titleText == "" && bodyText == "") {
+                let newEntry = Entry(timestamp: self.getFormattedTimestamp(NSDate()), title: titleText, bodyText: bodyText)
+                EntryController.sharedController.addEntry(newEntry)
+                self.entry = newEntry
+                }
+            }
+            
         }
         EntryController.sharedController.saveToPersistantStorage()
         self.navigationController?.popViewControllerAnimated(true)
