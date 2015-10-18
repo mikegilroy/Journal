@@ -129,6 +129,7 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         validateTextFields()
+                
         return true
     }
     

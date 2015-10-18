@@ -12,11 +12,13 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
+    @IBOutlet weak var notesCountBarButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Travel Notes"
+        self.title = "Notes"
+        notesCountBarButton.tintColor = UIColor.blackColor()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -27,6 +29,9 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
         
         // Disable edit button if no entries
         checkEditNeeded()
+        
+        // Update notes count
+        updateNotesCount()
     
     }
 
@@ -63,9 +68,10 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
             
                 // Delete the row containing the entry
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+            
         }
         
-        
+        updateNotesCount()
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -127,5 +133,12 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
 
+    func updateNotesCount() {
+        if EntryController.sharedController.entries.count == 1 {
+            notesCountBarButton.title = "\(EntryController.sharedController.entries.count) note"
+        } else {
+            notesCountBarButton.title = "\(EntryController.sharedController.entries.count) notes"
+        }
+    }
 }
 

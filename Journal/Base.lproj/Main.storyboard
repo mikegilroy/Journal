@@ -68,6 +68,8 @@
                                             <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="TNa-cb-ya4"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sNg-NS-fjS"/>
+                                    <barButtonItem title="0 Notes" style="plain" id="woq-B0-1wu"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tkX-Ye-sgd"/>
                                     <barButtonItem systemItem="compose" id="JAr-rb-9my">
                                         <connections>
@@ -94,6 +96,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editBarButton" destination="uTL-7d-FHs" id="S63-oF-1h4"/>
+                        <outlet property="notesCountBarButton" destination="woq-B0-1wu" id="hFb-7m-MM8"/>
                         <outlet property="tableView" destination="uY8-eQ-pcA" id="MxK-lF-5FM"/>
                     </connections>
                 </viewController>
@@ -113,13 +116,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="isW-dv-Ivj">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New note" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="isW-dv-Ivj">
                                 <rect key="frame" x="15" y="72" width="570" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7dy-3W-n8d"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="X9O-LD-mUA" id="urC-39-IrB"/>
@@ -132,24 +135,25 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="LAS-85-Trs"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Clear">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
+                                        <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="clearButtonTapped:" destination="X9O-LD-mUA" eventType="touchUpInside" id="gma-78-pEv"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-RW-PeR">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-RW-PeR">
                                 <rect key="frame" x="15" y="124" width="570" height="416"/>
                                 <animations/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                 <connections>
