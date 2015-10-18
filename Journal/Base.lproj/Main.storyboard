@@ -93,6 +93,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="a6o-TQ-hdM"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="editBarButton" destination="uTL-7d-FHs" id="S63-oF-1h4"/>
                         <outlet property="tableView" destination="uY8-eQ-pcA" id="MxK-lF-5FM"/>
                     </connections>
                 </viewController>
@@ -144,7 +145,7 @@
                                     <action selector="clearButtonTapped:" destination="X9O-LD-mUA" eventType="touchUpInside" id="gma-78-pEv"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-RW-PeR">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-RW-PeR">
                                 <rect key="frame" x="15" y="124" width="570" height="416"/>
                                 <animations/>
                                 <gestureRecognizers/>

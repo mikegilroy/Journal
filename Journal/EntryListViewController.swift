@@ -11,6 +11,7 @@ import UIKit
 class EntryListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editBarButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
@@ -23,6 +24,10 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
         
         // reload tableView data each time tableView appears
         tableView.reloadData()
+        
+        // Disable edit button if no entries
+        checkEditNeeded()
+    
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -102,13 +107,25 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func editButtonTapped(sender: UIBarButtonItem) {
         if tableView.editing {
             tableView.setEditing(false, animated: true)
+            sender.title = "Edit"
         } else {
             tableView.setEditing(true, animated: true)
+            sender.title = "Done"
         }
+        checkEditNeeded()
     }
     
     
     
+    // MARK: Functions
+    
+    func checkEditNeeded() {
+        if EntryController.sharedController.entries.count == 0 {
+            editBarButton.enabled = false
+        } else {
+            editBarButton.enabled = true
+        }
+    }
 
 }
 
