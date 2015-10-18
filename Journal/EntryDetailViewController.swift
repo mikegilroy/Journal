@@ -15,10 +15,11 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var clearButton: UIButton!
     
     var entry: Entry?
     
-    
+    // MARK: viewDid functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,10 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         } else {
             self.title = "New Note"
         }
+        
+        // disable save button until changes are made
+        saveButton.enabled = false
+        
     }
     
     
@@ -94,9 +99,9 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
             }
             
         }
+        
         EntryController.sharedController.saveToPersistantStorage()
         self.navigationController?.popViewControllerAnimated(true)
-    
     }
     
     
@@ -116,16 +121,26 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         return true
     }
     
-    /*
-    // function to dismiss keyoboard on return
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-            if(text == "\n") {
-                textView.resignFirstResponder()
-                return false
-            }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        validateTextFields()
         return true
     }
-    */
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        validateTextFields()
+        return true
+    }
+    
+    func validateTextFields() {
+        
+        
+        if ((titleTextField.text?.isEmpty)! && (bodyTextView.text.isEmpty)) {
+            saveButton.enabled = false
+        } else  {
+            saveButton.enabled = true
+        }
+    }
     
     
     
@@ -146,6 +161,7 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         // self.saveButtonTapped(bodyTextView)
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
     
     
     

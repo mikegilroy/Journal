@@ -144,12 +144,13 @@
                                     <action selector="clearButtonTapped:" destination="X9O-LD-mUA" eventType="touchUpInside" id="gma-78-pEv"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-RW-PeR">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-RW-PeR">
                                 <rect key="frame" x="15" y="124" width="570" height="416"/>
                                 <animations/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="X9O-LD-mUA" id="SVX-gg-gKO"/>
                                     <outletCollection property="gestureRecognizers" destination="2YK-cW-0F9" appends="YES" id="czb-L1-QLS"/>
@@ -181,6 +182,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bodyTextView" destination="q5U-RW-PeR" id="Rwt-iu-W2X"/>
+                        <outlet property="clearButton" destination="ePe-we-nsg" id="WMh-GG-62O"/>
                         <outlet property="saveButton" destination="Fj7-ib-N1b" id="2Bn-NN-c9c"/>
                         <outlet property="titleTextField" destination="isW-dv-Ivj" id="DED-V3-d3r"/>
                     </connections>
