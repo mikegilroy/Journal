@@ -42,6 +42,8 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         // disable save button until changes are made
         saveButton.enabled = false
         
+        // check if clear button neeeded
+        checkClearButtonNeeded()
     }
     
     
@@ -124,18 +126,17 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         validateTextFields()
+        checkClearButtonNeeded()
         return true
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         validateTextFields()
-                
+        checkClearButtonNeeded()
         return true
     }
     
     func validateTextFields() {
-        
-        
         if ((titleTextField.text?.isEmpty)! && (bodyTextView.text.isEmpty)) {
             saveButton.enabled = false
         } else  {
@@ -163,6 +164,14 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    
+    func checkClearButtonNeeded() {
+        if ((titleTextField.text?.isEmpty)! && (bodyTextView.text.isEmpty)) {
+            clearButton.hidden = true
+        } else  {
+            clearButton.hidden = false
+        }
+    }
     
     
     

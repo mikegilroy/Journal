@@ -17,16 +17,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="4G3-Ei-rwM">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <barButtonItem title="Edit" id="uTL-7d-FHs">
+                                        <connections>
+                                            <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="TNa-cb-ya4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sNg-NS-fjS"/>
+                                    <barButtonItem title="0 Notes" style="plain" id="woq-B0-1wu"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tkX-Ye-sgd"/>
+                                    <barButtonItem systemItem="compose" id="JAr-rb-9my">
+                                        <connections>
+                                            <segue destination="X9O-LD-mUA" kind="show" identifier="newEntry" id="OB8-oh-CcV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uY8-eQ-pcA">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="entryCell" textLabel="KEw-SE-Bvd" detailTextLabel="HuM-j4-zcJ" style="IBUITableViewCellStyleSubtitle" id="TJa-Di-WOQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="entryCell" textLabel="KEw-SE-Bvd" detailTextLabel="HuM-j4-zcJ" rowHeight="55" style="IBUITableViewCellStyleSubtitle" id="TJa-Di-WOQ">
                                         <rect key="frame" x="0.0" y="92" width="600" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TJa-Di-WOQ" id="Vzr-kW-EIv">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="54.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KEw-SE-Bvd">
@@ -59,31 +78,12 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="BY4-kV-ANU"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="4G3-Ei-rwM">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <animations/>
-                                <items>
-                                    <barButtonItem title="Edit" id="uTL-7d-FHs">
-                                        <connections>
-                                            <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="TNa-cb-ya4"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sNg-NS-fjS"/>
-                                    <barButtonItem title="0 Notes" style="plain" id="woq-B0-1wu"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tkX-Ye-sgd"/>
-                                    <barButtonItem systemItem="compose" id="JAr-rb-9my">
-                                        <connections>
-                                            <segue destination="X9O-LD-mUA" kind="show" identifier="newEntry" id="OB8-oh-CcV"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4G3-Ei-rwM" firstAttribute="trailing" secondItem="uY8-eQ-pcA" secondAttribute="trailing" id="1QP-Gm-fOs"/>
-                            <constraint firstItem="uY8-eQ-pcA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hlx-GD-0AB"/>
+                            <constraint firstItem="uY8-eQ-pcA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="hlx-GD-0AB"/>
                             <constraint firstAttribute="trailing" secondItem="uY8-eQ-pcA" secondAttribute="trailing" id="jWx-Ac-QA4"/>
                             <constraint firstItem="4G3-Ei-rwM" firstAttribute="leading" secondItem="uY8-eQ-pcA" secondAttribute="leading" id="m9c-Rw-5ag"/>
                             <constraint firstItem="uY8-eQ-pcA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="t77-8w-btb"/>
@@ -149,13 +149,12 @@
                                     <action selector="clearButtonTapped:" destination="X9O-LD-mUA" eventType="touchUpInside" id="gma-78-pEv"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-RW-PeR">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="q5U-RW-PeR">
                                 <rect key="frame" x="15" y="124" width="570" height="416"/>
                                 <animations/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="X9O-LD-mUA" id="SVX-gg-gKO"/>
                                     <outletCollection property="gestureRecognizers" destination="2YK-cW-0F9" appends="YES" id="czb-L1-QLS"/>
@@ -177,9 +176,9 @@
                             <constraint firstItem="q5U-RW-PeR" firstAttribute="centerX" secondItem="nTa-l1-sIV" secondAttribute="centerX" id="zvZ-ci-920"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="CeK-fn-RiL">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="IL0-Zz-kMA"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Fj7-ib-N1b">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="Fj7-ib-N1b">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="X9O-LD-mUA" id="Mw1-NC-cNu"/>
                             </connections>
@@ -193,7 +192,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9z-On-vda" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="yE0-wS-Imp"/>
                 <swipeGestureRecognizer direction="right" id="2YK-cW-0F9"/>
             </objects>
             <point key="canvasLocation" x="1909" y="394"/>
