@@ -97,6 +97,16 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
      }
     
     
+    // MARK: Actions
+    
+    @IBAction func editButtonTapped(sender: UIBarButtonItem) {
+        if tableView.editing {
+            tableView.setEditing(false, animated: true)
+        } else {
+            tableView.setEditing(true, animated: true)
+        }
+    }
+    
     
     
 

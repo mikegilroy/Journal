@@ -24,6 +24,9 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleTextViewSwipe")
         self.bodyTextView.addGestureRecognizer(swipeGestureRecognizer)
+        
+        self.navigationController?.navigationItem.backBarButtonItem?.target = "saveButtonTapped"
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -32,6 +35,16 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
             self.title = newEntry.title
         } else {
             self.title = "New Note"
+        }
+    }
+    
+    
+    override func viewWillDisappear(animated : Bool) {
+        super.viewWillDisappear(animated)
+        
+        // force save any changes to an entry when back button pressed
+        if (self.isMovingFromParentViewController()){
+            self.saveButtonTapped(self)
         }
     }
 
@@ -66,12 +79,17 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
             }
             currentEntry.timestamp = getFormattedTimestamp(NSDate())
         } else {
-            let newEntry = Entry(timestamp: self.getFormattedTimestamp(NSDate()), title: self.titleTextField.text!, bodyText: self.bodyTextView.text!)
-            EntryController.sharedController.addEntry(newEntry)
-            self.entry = newEntry
+            if let titleText = titleTextField.text, let bodyText = bodyTextView.text {
+                if !((titleText == "") && (bodyText == "")) {
+                    let newEntry = Entry(timestamp: self.getFormattedTimestamp(NSDate()), title: titleText, bodyText: bodyText)
+                    EntryController.sharedController.addEntry(newEntry)
+                    self.entry = newEntry
+                }
+            }
         }
-        
+        EntryController.sharedController.saveToPersistantStorage()
         self.navigationController?.popViewControllerAnimated(true)
+    
     }
     
     
