@@ -22,7 +22,7 @@ class Entry: Equatable {
     
     init(timestamp: String, title: String, bodyText: String) {
         self.title = title
-        self.bodyText = title
+        self.bodyText = bodyText
         self.timestamp = timestamp
     }
     

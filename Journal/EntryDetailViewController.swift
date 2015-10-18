@@ -14,6 +14,7 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var entry: Entry?
     
@@ -40,11 +41,10 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     
     override func viewWillDisappear(animated : Bool) {
-        super.viewWillDisappear(animated)
         
         // force save any changes to an entry when back button pressed
         if (self.isMovingFromParentViewController()){
-            self.saveButtonTapped(self)
+            self.saveButtonTapped(self.saveButton)
         }
     }
 
@@ -70,6 +70,8 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
+       
+        // If there is an existing entry - i.e. editing an entry
         if let currentEntry = entry {
             if let currentTitle = titleTextField.text {
                 currentEntry.title = currentTitle
@@ -78,14 +80,13 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
                 currentEntry.bodyText = currentBodyText
             }
             currentEntry.timestamp = getFormattedTimestamp(NSDate())
+            
+        // If this is a new entry
         } else {
-            if let titleText = titleTextField.text, let bodyText = bodyTextView.text {
-                if !((titleText == "") && (bodyText == "")) {
-                    let newEntry = Entry(timestamp: self.getFormattedTimestamp(NSDate()), title: titleText, bodyText: bodyText)
+            
+                    let newEntry = Entry(timestamp: self.getFormattedTimestamp(NSDate()), title: titleTextField.text!, bodyText: bodyTextView.text)
                     EntryController.sharedController.addEntry(newEntry)
                     self.entry = newEntry
-                }
-            }
         }
         EntryController.sharedController.saveToPersistantStorage()
         self.navigationController?.popViewControllerAnimated(true)

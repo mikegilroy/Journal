@@ -173,6 +173,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bodyTextView" destination="q5U-RW-PeR" id="Rwt-iu-W2X"/>
+                        <outlet property="saveButton" destination="Fj7-ib-N1b" id="2Bn-NN-c9c"/>
                         <outlet property="titleTextField" destination="isW-dv-Ivj" id="DED-V3-d3r"/>
                     </connections>
                 </viewController>
