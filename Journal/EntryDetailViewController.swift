@@ -19,7 +19,7 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     var entry: Entry?
     
-    // MARK: viewDid functions
+    // MARK: View functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,13 +108,6 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    
-    func updateWithEntry(entry: Entry) {
-        self.entry = entry
-        
-        self.titleTextField.text = entry.title
-        self.bodyTextView.text = entry.bodyText
-    }
 
 
     
@@ -150,20 +143,18 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
     
     // MARK: Functions
     
+    func updateWithEntry(entry: Entry) {
+        self.entry = entry
+        
+        self.titleTextField.text = entry.title
+        self.bodyTextView.text = entry.bodyText
+    }
+    
     
     func getFormattedTimestamp(date: NSDate) -> String {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "EEE h:mma - dd/MM/yyyy"
         return dateFormatter.stringFromDate(date)
-    }
-    
-
-    
-    // MARK: Handling Gestures
-    
-    func handleTextViewSwipe() {
-        // self.saveButtonTapped(bodyTextView)
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
     
@@ -174,6 +165,16 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
             clearButton.hidden = false
         }
     }
+
+    
+    // MARK: Handling Gestures
+    
+    func handleTextViewSwipe() {
+        // self.saveButtonTapped(bodyTextView)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+
     
     
     

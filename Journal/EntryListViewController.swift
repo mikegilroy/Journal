@@ -10,17 +10,21 @@ import UIKit
 
 class EntryListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    // MARK: Properties
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var notesCountBarButton: UIBarButtonItem!
     
+    
+    
+    // MARK: View Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Notes"
         notesCountBarButton.tintColor = UIColor.blackColor()
         self.navigationController?.navigationBar.translucent = false;
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -36,6 +40,9 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
         updateNotesCount()
     
     }
+    
+    
+    // MARK: TableView Setup
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return EntryController.sharedController.entries.count
