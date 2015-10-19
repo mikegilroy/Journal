@@ -19,6 +19,8 @@ class EntryListViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         self.title = "Notes"
         notesCountBarButton.tintColor = UIColor.blackColor()
+        self.navigationController?.navigationBar.translucent = false;
+
     }
     
     override func viewWillAppear(animated: Bool) {

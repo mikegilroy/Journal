@@ -29,6 +29,8 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate, UITextVi
         
         self.navigationController?.navigationItem.backBarButtonItem?.target = "saveButtonTapped"
         
+        self.navigationController?.navigationBar.translucent = false;
+
     }
     
     override func viewWillAppear(animated: Bool) {

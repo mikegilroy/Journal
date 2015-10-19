@@ -37,7 +37,7 @@
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uY8-eQ-pcA">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -83,7 +83,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4G3-Ei-rwM" firstAttribute="trailing" secondItem="uY8-eQ-pcA" secondAttribute="trailing" id="1QP-Gm-fOs"/>
-                            <constraint firstItem="uY8-eQ-pcA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="hlx-GD-0AB"/>
+                            <constraint firstItem="uY8-eQ-pcA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hlx-GD-0AB"/>
                             <constraint firstAttribute="trailing" secondItem="uY8-eQ-pcA" secondAttribute="trailing" id="jWx-Ac-QA4"/>
                             <constraint firstItem="4G3-Ei-rwM" firstAttribute="leading" secondItem="uY8-eQ-pcA" secondAttribute="leading" id="m9c-Rw-5ag"/>
                             <constraint firstItem="uY8-eQ-pcA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="t77-8w-btb"/>
@@ -91,8 +91,8 @@
                             <constraint firstItem="4G3-Ei-rwM" firstAttribute="top" secondItem="uY8-eQ-pcA" secondAttribute="bottom" id="y3g-G5-Coq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aNL-Pb-1Rc">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="a6o-TQ-hdM"/>
+                    <navigationItem key="navigationItem" id="KsL-Dm-T6u">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="QXz-Ot-dud"/>
                     </navigationItem>
                     <connections>
                         <outlet property="editBarButton" destination="uTL-7d-FHs" id="S63-oF-1h4"/>
@@ -176,7 +176,6 @@
                             <constraint firstItem="q5U-RW-PeR" firstAttribute="centerX" secondItem="nTa-l1-sIV" secondAttribute="centerX" id="zvZ-ci-920"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="CeK-fn-RiL">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="Fj7-ib-N1b">
                             <connections>
@@ -207,6 +206,11 @@
                         <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2Na-RP-bp3">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="afh-mQ-tIG"/>
                     </connections>
